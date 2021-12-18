@@ -1,0 +1,778 @@
+/* start variable  */
+:root {
+  --main-color: #c0f5cb;
+  /* --main-color: #08104e; */
+  --main-color-lg: #ff002b57;
+  --second-color: #9ba9b8;
+  /* --third-color: #333; */
+  --third-color: rgb(67, 70, 99);
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: #ccc;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-color);
+  border-radius: 5px;
+}
+.container {
+  margin-top: 70px !important;
+}
+.cell {
+  width: 33%;
+  height: 350px;
+  margin: 0 15px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.cell img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: all .2s ease-in-out;
+}
+.cell:hover img {
+  transform: scale(1.3);
+}
+.cell:hover p:first-of-type {
+  text-decoration: underline;
+}
+/* end variable */
+
+/* start main  */
+body {
+  background-color: white;
+  font-size: 16px;
+}
+html {
+  scroll-behavior: smooth;
+}
+.back-to-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  font-size: 26px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--main-color);
+  color: white;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  transition-property: background-color, color;
+  border-radius: 50%;
+}
+/* end main  */
+
+/* start navbar */
+.navbar {
+  padding-right: 100px;
+  padding-left: 100px;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+}
+.navbar .navbar-brand img {
+  width: 260px;
+}
+.navbar .navbar-nav {
+  margin: auto;
+}
+.navbar .navbar-nav .nav-item {
+  margin-right: 20px;
+}
+.navbar .navbar-nav .nav-item .active {
+  color: var(--main-color);
+  cursor: default;
+}
+.navbar .navbar-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.navbar .navbar-text .icon-social {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  width: 120px;
+  margin: 0;
+  padding: 0 20px 0 0;
+}
+.navbar .navbar-text .icon-social li i:hover{
+  color: var(--main-color);
+  cursor: pointer;
+}
+.navbar .navbar-text .lang {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.navbar .navbar-items ul li a {
+  text-transform: capitalize;
+  cursor: pointer;
+  position: relative;
+}
+.navbar .navbar-items ul li a::after {
+  content: '';
+  width: 0;
+  height: 3px;
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--main-color);
+  transition: width 0.3s;
+}
+.navbar .navbar-items ul li a:hover {
+  color: var(--main-color) !important;
+}
+.navbar .navbar-items ul li a:hover:not(.active):after {
+  width: 50%;
+}
+.navbar span.active {
+  color: var(--third-color);
+  font-size: 17px;
+}
+.navbar span:not(.active):not(.lang-sp) {
+  cursor: pointer;
+}
+.navbar span.lang-sp {
+  padding: 0 5px !important;
+}
+@media only screen and (max-width: 768px) {
+  .navbar .navbar-brand img {
+    width: 200px;
+  }
+  nav {
+    padding-right:20px !important;
+    padding-left:20px !important;
+  }
+  .navbar .navbar-items ul li{
+    display: flex;
+    justify-content: center;
+  }
+}
+/* end navbar */
+
+/* start sidebar  */
+.side-bar {
+  position: fixed;
+  z-index: 2000;
+  height: 100%;
+  top: 10%;
+  left: -30px;
+}
+.side-bar ul {
+  list-style-type: none;
+  height: 100%;
+}
+.side-bar ul li {
+  height: calc(70% / 4);
+  transform: rotate(-90deg);
+  color: var(--third-color);
+  font-weight: 500;
+  padding: 5px 10px 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+.side-bar ul li p.active {
+  background-color: var(--main-color);
+  color: white;
+}
+/* end sidebar  */
+
+/* start slide presentation */
+.slide-presentation {
+  height: 100%;
+  width: 100%;
+  background-color: var(--main-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.slide-presentation .logo{
+  margin-bottom: 100px;
+  margin-top: -170px;
+}
+.slide-presentation .text h6{
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 140px;
+  font-family: 'Montserrat', sans-serif;
+  font-family: 'Cairo', sans-serif;
+  text-align: center;
+}
+.slide-presentation .text p{
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 40px;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  margin-top: -30px;
+}
+.slide-presentation .btn form{
+  position: relative;
+}
+.slide-presentation .btn form img.f-b-lang {
+  position: absolute;
+  top: 100px;
+  left: 20px;
+  width: 60px;
+  height: 80px;
+  border-radius: 50px;
+  display: none;
+}
+.slide-presentation .btn form img.a-b-lang {
+  position: absolute;
+  top: 100px;
+  right: 20px;
+  width: 300px;
+  height: 80px;
+  border-radius: 50px;
+  font-family: 'Montserrat', sans-serif;
+}
+.slide-presentation .btn form input[type="button"]{
+  width: 300px;
+  padding: 15px 40px;
+  font-size: 30px;
+  font-weight: 200 !important;
+  border-radius: 50px;
+  background-color: var(--main-color);
+  margin: 0 20px;
+  margin-top: 100px;
+  border: 5px solid white;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 white;
+  transition: ease-out 0.5s;
+}
+.slide-presentation .btn form input[type="button"]:hover{
+  box-shadow: inset 0 -150px 0 0 white;
+}
+.slide-presentation .btn form input[type="button"].ar{
+  font-family: 'Gasq', sans-serif;
+}
+.slide-presentation .logo {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+.slide-presentation .text {
+  color: white;
+}
+.slide-presentation .text h6 {
+  font-weight: 900;
+}
+.slide-presentation .text p {
+  font-weight: 600;
+}
+.slide-presentation .besoin1 {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: calc(100%/2);
+  height: 0vh;
+  background-color: white;
+  transition-duration: 1s;
+  transition-property: height;
+}
+.slide-presentation .besoin2 img,
+.slide-presentation .besoin1 img{
+  display: none;
+}
+.slide-presentation .besoin2 {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: calc(100%/2);
+  height: 0vh;
+  background-color: var(--main-color);
+}
+.slide-presentation .besoin3 {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: calc((100% / 2)* -1);
+  /* bottom: 0; */
+  top: 0;
+  width: calc(100%/2);
+  height: 100vh;
+  background-color: var(--main-color);
+  display: none;
+}
+.slide-presentation .besoin4 {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: calc(100% * -1);
+  /* bottom: 0; */
+  top: 0;
+  width: calc(100%/2);
+  height: 100vh;
+  background-color: white;
+  display: none;
+}
+.slide-presentation .logo-mult{
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+
+/* start slide hopital  */
+.slide-hopital {
+  width: 100%;
+  height: 90vh;
+  background-color: var(--main-color);
+  display: flex;
+  flex-direction: column;
+  padding-top: 70px;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  align-items: center;
+  color: white;
+}
+.slide-hopital .text h6{
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 80px;
+  margin-top: 20px;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+.slide-hopital .text p{
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 25px;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  margin-top: -15px;
+}
+.slide-hopital .btn input {
+  border: 5px solid white;
+  width: 300px;
+  height: 100px;
+  /* padding: 15px 0 0 0; */
+  text-align: center;
+  border-radius: 500px;
+  background-color: var(--main-color);
+  color: white;
+  margin: 10px !important; 
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: capitalize;
+  cursor: pointer;
+  animation: serviceLoad 1000ms 100ms;
+  animation-fill-mode: forwards;
+  transform: translateY(-40px);
+  opacity: 0;
+}
+@keyframes serviceLoad {
+  0%{
+    transform: translatey(-40px);
+    opacity: 0;
+  }
+  100%{
+    transform: translatey(0px);
+    opacity: 100;
+  }
+}
+.slide-hopital .btn form {
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+.slide-hopital .btn form a {
+  position: relative;
+}
+.slide-hopital .btn form a img{
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+}
+/* end slide hopital  */
+
+/* start slide service  */
+.slide-service {
+  width: 100%;
+  height: 90vh !important;
+  background-color: var(--main-color);
+  display: flex;
+  flex-direction: column;
+  padding-top: 70px;
+  align-items: center;
+  color: white;
+}
+.slide-service .text h6{
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 80px;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+.slide-service .map {
+  width: 70%;
+  height: 50vh;
+  margin-top: 30px;
+  background-color: white;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid white;
+  position: relative;
+}
+.slide-service .map img {
+  width: 100%;
+  height: 100%;
+}
+.slide-service .popup-ticket3,
+.slide-service .popup-ticket {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.822);
+  display: flex;
+  justify-content: center;
+  display: none;
+}
+.popup-ticket div{
+  width: 450px;
+  height: 600px;
+  position: relative;
+  background-size: cover;
+  background-image: url('../../data/images/Group\ 1.png');
+}
+.popup-ticket div .close{
+  background-image: initial;
+  position: absolute;
+  right: 15px;
+  top:60px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+.popup-ticket3 div{
+  width: 450px;
+  height: 600px;
+  position: relative;
+  background-size: cover;
+  background-image: url('../../data/images/mapversphone.png');
+}
+.popup-ticket3 div .close{
+  background-image: initial;
+  position: absolute;
+  right: 15px;
+  top:60px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.slide-service .btn-opt form input {
+  background-color: var(--main-color);
+  border-radius: 50px;
+  width: 300px;
+  color: white;
+  padding: 12px 30px;
+  border: 3px solid white;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 20px;
+  margin-top: 50px;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+.slide-service .cube{
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-color: red;
+}
+.slide-service .c1 {
+  width: 110px;
+  height: 80px;
+  right: 30px;
+  top: 30px;
+}
+.slide-service .c2 {
+  width: 100px;
+  height: 80px;
+  right: 280px;
+  top: 30px;
+}
+.slide-service .c3 {
+  width: 90px;
+  height: 80px;
+  right: 280px;
+  top: 160px;
+}
+.slide-service .c4 {
+  width: 140px;
+  height: 80px;
+  right: 40px;
+  top: 140px;
+}
+.slide-service .c5 {
+  width: 100px;
+  height: 80px;
+  right: 40px;
+  bottom: 60px;
+}
+.slide-service .c6 {
+  width: 110px;
+  height: 80px;
+  left: 30px;
+  top: 20px;
+}
+.slide-service .c7 {
+  width: 110px;
+  height: 80px;
+  left: 30px;
+  top: 140px;
+}
+.slide-service .c8 {
+  width: 110px;
+  height: 80px;
+  left: 250px;
+  top: 30px;
+}
+.slide-service .tooltip-info {
+  font-family: 'Montserrat-light', sans-serif;
+  width: 200px;
+  height: 3q00px;
+  background-color: white;
+  box-shadow: 1px 1px 28px -8px rgb(18, 82, 21);
+  border-radius: 10px;
+  color: rgb(51, 51, 51);
+  padding: 10px;
+  text-transform: capitalize;
+  position: relative;
+  z-index: 10;
+}
+.slide-service .tooltip-info::before{
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  top: -17px;
+  /* left: 50%; */
+  left: 90px;
+  transform: rotate(45deg);
+  background-color: white;
+  /* box-shadow: 1px 1px 28px -8px rgb(18, 82, 21); */
+  z-index: 2;
+}
+.slide-service .tooltip-info h3 {
+  font-size: 25px;
+}
+.slide-service .tooltip-info div {
+  display: flex;
+}
+.slide-service .tooltip-info p:first-of-type {
+  margin-right: 10px;
+  color: #888;
+  font-size: 14px;
+}
+.slide-service .tooltip-info p{
+  font-size: 14px;
+}
+.slide-service .tooltip-info h6 {
+  font-size: 18px;
+  margin-top: 10px;
+
+}
+.popup-ticket1 div{
+  background-image: url('../../data/images/mapversphone.png') !important;
+  background-size: cover;
+}
+/* end slide service  */
+
+.back,.menu{
+  position: fixed;
+  font-size: 40px;
+  border-radius: 50px;
+  padding: 10px;
+  background-color: white;
+  color: var(--main-color);
+}
+.back {
+  left: 30px;
+  top: 30px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.menu {
+  right: 30px;
+  top: 30px;
+}
+.back a:active, .menu a:active,
+.back a:hover, .menu a:hover,
+.back a:visited, .menu a:visited {
+  text-decoration: none;
+  color: var(--main-color);
+}
+
+/* start slide taxi  */
+.slide-taxi {
+  width: 100%;
+  height: 88vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding-top: 70px;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  align-items: center;
+  color: var(--main-color)
+}
+.slide-taxi .text h6{
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 80px;
+  margin-top: 20px;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+.slide-taxi .btn form{
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-content: center;
+  margin-top: 70px;
+  position: relative;
+}
+.slide-taxi .btn form p{
+  color: var(--main-color);
+  font-size: 14px;
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 30px;
+}
+.slide-taxi .btn input{
+  outline: none;
+  /* font-weight: 900; */
+  width: 400px;
+  margin-top: 20px;
+  font-size: 18px;
+  padding: 15px 20px;
+  /* font-family: 'Montserrat', sans-serif; */
+  border: 4px solid var(--main-color);
+  color: var(--main-color);
+  background-color: white;
+  border-radius: 50px;
+}
+.slide-taxi .btn input::placeholder{
+  color: var(--main-color);
+}
+.slide-taxi .btn input:last-of-type{
+  margin-top: 40px;
+  cursor: pointer;
+}
+.slide-taxi .btn input:not(:last-of-type){
+  padding: 15px 20px 15px 60px;
+}
+.slide-taxi .btn form i:first-of-type{
+  color: var(--main-color);
+  position: absolute;
+  left: 20px;
+  top:50px;
+  transform: translateY(-50%);
+}
+.slide-taxi .btn form i:last-of-type{
+  color: var(--main-color);
+  position: absolute;
+  left: 20px;
+  top:120px;
+}
+.slide-taxi .btn form .circle {
+  position: absolute;
+  top: 180px;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  background-color: var(--main-color);
+}
+.slide-taxi .btn form .rect {
+  position: absolute;
+  top: 200px;
+  left: 70px;
+  width: 10px;
+  height: 55px;
+  border-radius: 50px;
+  background-color: var(--main-color);
+  transition-property: width;
+  transition-duration: 1s;
+}
+/* .slide-taxi .btn form .circle:hover{ */
+  
+/* } */
+.slide-taxi .btn form .rect:hover {
+  width: 325px;
+}
+.slide-logo{
+  height: 100vh;
+}
+.ticket-taxi {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.719);
+  position: absolute;
+  left: 0;
+  top:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.ticket-taxi div{
+  width: 450px;
+  height: 600px;
+  position: relative;
+  background-image: url('../../data/images/taxi\ ticket.png');
+  background-size: cover;
+}
+.ticket-taxi div .close2{
+  background-image: initial;
+  position: absolute;
+  right: 15px;
+  top:60px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+/* end slide taxi  */
+
+/* end besoin 3 and 4  */
